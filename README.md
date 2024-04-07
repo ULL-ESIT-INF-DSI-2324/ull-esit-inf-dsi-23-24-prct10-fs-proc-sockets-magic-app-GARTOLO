@@ -19,6 +19,8 @@ Guillermo Emmanuel González Méndez - alu0101466941
 
 ## Desarrollo de la práctica
 
+Script `"start-server": "tsc -p . && node dist/server/index.js"`
+
 ### Ejercicio 1
 
 ### Ejercicio 2

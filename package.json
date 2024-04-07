@@ -12,7 +12,8 @@
     "start": "npm run build && node dist/index.js",
     "lint": "eslint .",
     "format": "npx prettier --write .",
-    "docs": "typedoc"
+    "docs": "typedoc",
+    "start-server": "tsc -p . && node dist/server/index.js"
   },
   "keywords": [],
   "author": "",
