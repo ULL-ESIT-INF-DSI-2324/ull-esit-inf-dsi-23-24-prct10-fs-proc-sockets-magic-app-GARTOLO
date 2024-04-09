@@ -1,7 +1,8 @@
-import { CommandModule } from "yargs";
-import { ICard } from "../../ICard.js";
-import { createICard } from "../functions/createICard.js";
+import {CommandModule} from "yargs";
+import {CardColour, CardRarity, CardType, ICard} from "../../ICard.js";
 import chalk from "chalk";
+import {sendRequest} from "../client.js";
+import {AddRequest} from "../../requests/requests.js";
 
 /**
  * Command to add a new card to the collection
@@ -77,5 +78,24 @@ export const addCommand: CommandModule = {
     );
 
     // TODO: Add the card (server)
+    // const card: ICard = createICard(argv);
+    const card: ICard = {
+      id: Number(argv.id),
+      name: String(argv.name),
+      manaCost: Number(argv.mana_cost),
+      colour: CardColour.Blue,
+      type: CardType.Artifact,
+      rarity: CardRarity.Common,
+      text: String(argv.text),
+      value: Number(argv.value),
+    }
+
+    const request: AddRequest = {
+      type: "add",
+      user: String(argv.user),
+      card: card,
+    }
+
+    sendRequest(request);
   },
 };

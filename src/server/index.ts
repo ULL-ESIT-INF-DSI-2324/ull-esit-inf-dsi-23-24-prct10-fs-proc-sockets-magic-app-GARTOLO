@@ -16,6 +16,16 @@ const server = net.createServer((socket) => {
       switch (request.type) {
         case 'add':
           console.log('Adding card:', request.card);
+
+          // Send a response to the client
+
+          const response = {
+            type: 'add',
+            success: true,
+          };
+          const responseString = JSON.stringify(response) + '\f';
+          socket.write(responseString);
+          socket.end();
           break;
         case 'list':
           console.log('Listing cards for user:', request.user);
