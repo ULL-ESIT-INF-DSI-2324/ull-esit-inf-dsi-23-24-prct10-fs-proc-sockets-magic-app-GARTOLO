@@ -1,4 +1,4 @@
-import { ICard } from "../../ICard.js";
+import { ICard } from "../../types/ICard.js";
 import chalk from "chalk";
 
 /**

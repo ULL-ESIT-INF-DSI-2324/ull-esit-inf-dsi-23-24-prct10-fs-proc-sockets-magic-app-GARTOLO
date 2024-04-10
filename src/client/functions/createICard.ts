@@ -1,4 +1,4 @@
-import {CardType, ICard, ICreatureCard, IPlaneswalkerCard} from "../../ICard.js";
+import {CardColour, CardType, ICard, ICreatureCard, IPlaneswalkerCard} from "../../types/ICard.js";
 
 function createICard(cardData: Partial<ICard>): ICard {
   if (!cardData.id) {
@@ -25,6 +25,9 @@ function createICard(cardData: Partial<ICard>): ICard {
   if (!cardData.value) {
     throw new Error("Card value is required");
   }
+
+  // Check the Colour, Rarity and Type to be a valid value
+  if (cardData.colour !== "BLue") throw new Error("Card colour is not valid.")
 
   // Create a card object with the required properties
   const card: ICard = {
@@ -61,7 +64,7 @@ function createICard(cardData: Partial<ICard>): ICard {
   return card;
 }
 
-function createCardFromArgs(argv): ICard {
+export function createCardFromArgs(argv: any): ICard {
   return createICard(
     {
       id: Number(argv.id),

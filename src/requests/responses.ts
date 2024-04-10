@@ -1,7 +1,7 @@
 /**
  * File with types for responses from the server
  */
-import {ICard} from "../ICard.js";
+import {ICard} from "../types/ICard.js";
 
 type ResponseType = 'success' | 'error';
 

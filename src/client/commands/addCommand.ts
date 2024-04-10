@@ -1,8 +1,9 @@
 import {CommandModule} from "yargs";
-import {CardColour, CardRarity, CardType, ICard} from "../../ICard.js";
 import chalk from "chalk";
-import {sendRequest} from "../client.js";
+import {sendRequest} from "../sendRequest.js";
 import {AddRequest} from "../../requests/requests.js";
+
+import { createCardFromArgs } from "../functions/createICard.js"
 
 /**
  * Command to add a new card to the collection
@@ -78,24 +79,18 @@ export const addCommand: CommandModule = {
     );
 
     // TODO: Add the card (server)
-    // const card: ICard = createICard(argv);
-    const card: ICard = {
-      id: Number(argv.id),
-      name: String(argv.name),
-      manaCost: Number(argv.mana_cost),
-      colour: CardColour.Blue,
-      type: CardType.Artifact,
-      rarity: CardRarity.Common,
-      text: String(argv.text),
-      value: Number(argv.value),
+    try {
+      const card = createCardFromArgs(argv);
+      
+      const request: AddRequest = {
+        type: "add",
+        user: String(argv.user),
+        card: card,
+      }
+  
+      sendRequest(request);
+    } catch (e) {
+      console.log(chalk.bold.red("Error creating the card:", e))
     }
-
-    const request: AddRequest = {
-      type: "add",
-      user: String(argv.user),
-      card: card,
-    }
-
-    sendRequest(request);
   },
 };

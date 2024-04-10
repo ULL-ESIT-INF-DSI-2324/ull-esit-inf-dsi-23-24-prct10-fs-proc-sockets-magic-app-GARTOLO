@@ -2,7 +2,7 @@
  * File that contains all the types for requests to the server
  */
 
-import {ICard} from "../ICard.js";
+import {ICard} from "../types/ICard.js";
 
 /**
  * Base request type

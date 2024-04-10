@@ -1,7 +1,5 @@
 import { CommandModule } from "yargs";
-import { ICard } from "../../ICard.js";
 import chalk from "chalk";
-import { createICard } from "../functions/createICard.js";
 
 /**
  * Command module to update a card in the collection
