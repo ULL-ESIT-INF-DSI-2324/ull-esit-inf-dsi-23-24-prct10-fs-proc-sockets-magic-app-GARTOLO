@@ -27,7 +27,7 @@ function createICard(cardData: Partial<ICard>): ICard {
   }
 
   // Check the Colour, Rarity and Type to be a valid value
-  if (cardData.colour !== "BLue") throw new Error("Card colour is not valid.")
+  // if (cardData.colour !== "BLue") throw new Error("Card colour is not valid.")
 
   // Create a card object with the required properties
   const card: ICard = {

@@ -7,6 +7,7 @@ import net from 'net';
 
 import { RequestTypes } from "../requests/requests.js";
 import chalk from "chalk";
+import {handleResponse} from "./responseHandler.js";
 
 /**
  * Function that sends a request to the server
@@ -15,7 +16,7 @@ import chalk from "chalk";
 export function sendRequest(request: RequestTypes) {
   const socket = net.createConnection({ port: 8000 });
 
-  // Send a request to the server
+  // Send a request to the server, with a request event
   const requestString = JSON.stringify(request) + "\f";
   socket.write(requestString);
 
@@ -25,7 +26,9 @@ export function sendRequest(request: RequestTypes) {
     accumulatedData += data.toString();
     if (accumulatedData.endsWith('\f')) {
       const response = JSON.parse(accumulatedData.slice(0, -1));
-      console.log('Response:', response);
+      // Handle the response
+      handleResponse(response);
+
       accumulatedData = '';
     }
   });

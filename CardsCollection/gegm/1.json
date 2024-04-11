@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "name": "Black Lotus",
+  "manaCost": 10000,
+  "colour": "Green",
+  "type": "Creature",
+  "rarity": "Common",
+  "text": "test",
+  "value": 3,
+  "strength": 12,
+  "resistance": 11
+}
