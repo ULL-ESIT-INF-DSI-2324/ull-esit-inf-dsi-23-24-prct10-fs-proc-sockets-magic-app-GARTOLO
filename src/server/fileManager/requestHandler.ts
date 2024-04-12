@@ -5,9 +5,15 @@
 
 import {RequestTypes} from "../../requests/requests.js";
 import net from "net";
-import {createErrorResponse, createListResponse, createSuccessResponse} from "../../requests/responses.js";
+import {
+  createErrorResponse,
+  createGetResponse,
+  createListResponse,
+  createSuccessResponse
+} from "../../requests/responses.js";
 import {listCollection} from "./listCollection.js";
 import {ICard} from "../../types/ICard.js";
+import {showCard} from "./showCard.js";
 
 /**
  * Handle a request from the client
@@ -62,6 +68,21 @@ export function handleRequest(request: RequestTypes, socket: net.Socket) {
       break;
     case 'show':
       console.log('Showing card:', request.id);
+      showCard(request.user, request.id, (err, data) => {
+        if (err) {
+          console.error("ShowCard err:", err);
+          const response = createErrorResponse('Error showing card: ' + err);
+          const responseString = JSON.stringify(response) + '\f';
+          socket.write(responseString);
+          socket.end();
+        }
+        else if (data) {
+          const response = createGetResponse(data as ICard);
+          const responseString = JSON.stringify(response) + '\f';
+          socket.write(responseString);
+          socket.end();
+        }
+      });
       break;
     case 'update':
       console.log('Updating card:', request.id);

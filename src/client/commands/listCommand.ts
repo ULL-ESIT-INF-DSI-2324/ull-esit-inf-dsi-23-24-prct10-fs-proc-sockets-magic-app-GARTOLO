@@ -19,7 +19,6 @@ export const listCommand: CommandModule = {
   handler: (argv) => {
     console.log(chalk.blue("Listing all cards for user: " + argv.user));
 
-    // TODO: List the cards in the user  collection (server)
     const request: ListRequest = {
       type: 'list',
       user: String(argv.user),
