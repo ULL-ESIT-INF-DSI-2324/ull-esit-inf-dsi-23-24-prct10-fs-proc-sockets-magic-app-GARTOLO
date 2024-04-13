@@ -33,11 +33,12 @@ Este archivo hace uso del sendRequest para enviar las peticiones al servidor. Co
 - `src/server`: Contiene el código del servidor. Contamos con un archivo `index.ts` que se encarga de ejecutar el servidor.
 En la carpeta `fileManager` se encuentran las funciones que se encargan de leer y escribir en los archivos.
 
-Hemos añadido un script al `package.json` para poder ejecutar el servidor y el cliente de manera sencilla:
+Hemos añadido un script al `package.json` para poder ejecutar el servidor de manera sencilla:
 ```json
 "start-server": "tsc -p . && node dist/server/index.js"
 ```
 
+La ruta para ejecutar el cliente es `dist/client/magic-app.js`.
 
 ## Modificación
 

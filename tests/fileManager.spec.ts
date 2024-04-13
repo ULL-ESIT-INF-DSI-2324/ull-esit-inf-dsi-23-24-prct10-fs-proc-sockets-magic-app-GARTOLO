@@ -52,6 +52,13 @@ describe('Test fileManager and createICard', () => {
     });
   });
 
+  it('Remove another card', (done) => {
+    removeCard("test", 2, (err) => {
+      expect(err).to.be.undefined;
+      done();
+    });
+  });
+
   it('Update a card that does not exists', (done) => {
     updateCard("test", card2, (err) => {
       expect(err).to.equal("Error on read file. Card does not exists");
@@ -93,13 +100,6 @@ describe('Test fileManager and createICard', () => {
     showCard("test2", 1, (err, data) => {
       expect(err).to.equal("Error on read dir. User does not exists");
       expect(data).to.be.undefined;
-      done();
-    });
-  });
-
-  it('Remove another card', (done) => {
-    removeCard("test", 2, (err) => {
-      expect(err).to.be.undefined;
       done();
     });
   });
