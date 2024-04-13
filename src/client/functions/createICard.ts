@@ -1,6 +1,6 @@
 import {CardColour, CardRarity, CardType, ICard, ICreatureCard, IPlaneswalkerCard} from "../../types/ICard.js";
 
-function createICard(cardData: Partial<ICard>): ICard {
+export function createICard(cardData: Partial<ICard> | Partial<ICreatureCard>): ICard {
   if (!cardData.id) {
     throw new Error("Card ID is required");
   }
@@ -74,6 +74,11 @@ function createICard(cardData: Partial<ICard>): ICard {
   return card;
 }
 
+/* c8 ignore start */
+/**
+ * Create a card object from the command line arguments
+ * @param argv
+ */
 export function createCardFromArgs(argv: any): ICard {
   return createICard(
     {
@@ -91,3 +96,4 @@ export function createCardFromArgs(argv: any): ICard {
     }
   );
 }
+/* c8 ignore stop */
