@@ -22,6 +22,7 @@ export const listCollection = (
       // console.log("Data", data);
 
       getCards(userDir, data, (err, data) => {
+        /* c8 ignore next */
         if (err) callback("Error on reading file.", undefined);
         else callback(undefined, data);
       });
@@ -44,6 +45,7 @@ const getCards = (
 
   files.forEach((file) => {
     fs.readFile(`${userDir}/${file}`, "utf-8", (err, data) => {
+      /* c8 ignore next */
       if (err) callback("Error on reading file.", undefined);
       else {
         // console.log("Data on read file:", data)

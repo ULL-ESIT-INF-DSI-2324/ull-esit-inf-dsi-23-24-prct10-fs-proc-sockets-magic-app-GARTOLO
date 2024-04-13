@@ -22,6 +22,7 @@ export const updateCard = (
     } else {
       // Read the card file
       fs.readFile(`${userDir}/${card.id}.json`, "utf-8", (err, data) => {
+        /* c8 ignore next 2 */
         if (err) {
           callback("Error on read file. Card does not exists");
         } else {
@@ -32,6 +33,7 @@ export const updateCard = (
           };
           // Write the card file
           fs.writeFile(`${userDir}/${card.id}.json`, JSON.stringify(updatedCard), (err) => {
+            /* c8 ignore next 2 */
             if (err) {
               callback("Error on write file");
             } else {

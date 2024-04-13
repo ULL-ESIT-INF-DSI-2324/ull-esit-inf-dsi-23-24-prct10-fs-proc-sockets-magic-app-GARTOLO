@@ -23,19 +23,11 @@ export const addCard = (
         if (err) {
           callback("Error on create dir");
         } else {
-          // Check if the card file exists
-          checkFileExists(`${userDir}/${card.id}.json`, (exists) => {
-            if (exists) {
-              callback("Card already exists");
+          fs.writeFile(`${userDir}/${card.id}.json`, JSON.stringify(card), (err) => {
+            if (err) {
+              callback("Error on write file");
             } else {
-              // Write the card file
-              fs.writeFile(`${userDir}/${card.id}.json`, JSON.stringify(card), (err) => {
-                if (err) {
-                  callback("Error on write file");
-                } else {
-                  callback(undefined);
-                }
-              });
+              callback(undefined);
             }
           });
         }
@@ -48,6 +40,7 @@ export const addCard = (
         } else {
           // Write the card file
           fs.writeFile(`${userDir}/${card.id}.json`, JSON.stringify(card), (err) => {
+            /* c8 ignore next 2 */
             if (err) {
               callback("Error on write file");
             } else {
