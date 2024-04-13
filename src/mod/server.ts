@@ -30,12 +30,12 @@ net
 
           // cat.stdout.pipe(process.stdout);
 
-          const wc = spawn("wc");
+          // const wc = spawn("wc");
 
           // cat.stdout.pipe(wc.stdin);
 
           let wcOutput = "";
-          wc.stdout.on("data", (piece) => (wcOutput += piece));
+          // wc.stdout.on("data", (piece) => (wcOutput += piece));
 
           console.log(wcOutput);
           const wcOutputAsArray = wcOutput.split(/\s+/);
