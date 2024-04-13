@@ -14,6 +14,9 @@ import {
 import {listCollection} from "./listCollection.js";
 import {ICard} from "../../types/ICard.js";
 import {showCard} from "./showCard.js";
+import {removeCard} from "./removeCard.js";
+import {addCard} from "./addCard.js";
+import {updateCard} from "./updateCard.js";
 
 /**
  * Handle a request from the client
@@ -21,17 +24,27 @@ import {showCard} from "./showCard.js";
  * @param socket The socket to send the response to
  */
 export function handleRequest(request: RequestTypes, socket: net.Socket) {
-  console.log('Request event:', request);
+  console.log('Request event:', request.type);
 
   switch (request.type) {
     case 'add': {
-      console.log('Adding card:', request.card);
+      console.log('Adding card.');
 
-      // Send a response to the client
-      const response = createSuccessResponse('Card added successfully');
-      const responseString = JSON.stringify(response) + '\f';
-      socket.write(responseString);
-      socket.end();
+      addCard(request.user, request.card, (err) => {
+        if (err) {
+          console.error("AddCard err:", err);
+          const response = createErrorResponse('Error adding card: ' + err);
+          const responseString = JSON.stringify(response) + '\f';
+          socket.write(responseString);
+          socket.end();
+        }
+        else {
+          const response = createSuccessResponse('Card added successfully');
+          const responseString = JSON.stringify(response) + '\f';
+          socket.write(responseString);
+          socket.end();
+        }
+      });
       break;
     }
     case 'list':
@@ -86,9 +99,40 @@ export function handleRequest(request: RequestTypes, socket: net.Socket) {
       break;
     case 'update':
       console.log('Updating card:', request.id);
+
+      updateCard(request.user, request.card, (err) => {
+        if (err) {
+          console.error("UpdateCard err:", err);
+          const response = createErrorResponse('Error updating card: ' + err);
+          const responseString = JSON.stringify(response) + '\f';
+          socket.write(responseString);
+          socket.end();
+        }
+        else {
+          const response = createSuccessResponse('Card updated successfully');
+          const responseString = JSON.stringify(response) + '\f';
+          socket.write(responseString);
+          socket.end();
+        }
+      });
       break;
     case 'remove':
       console.log('Removing card:', request.id);
+      removeCard(request.user, request.id, (err, data) => {
+        if (err) {
+          console.error("RemoveCard err:", err);
+          const response = createErrorResponse('Error removing card: ' + err);
+          const responseString = JSON.stringify(response) + '\f';
+          socket.write(responseString);
+          socket.end();
+        }
+        else if (data) {
+          const response = createSuccessResponse('Card removed successfully');
+          const responseString = JSON.stringify(response) + '\f';
+          socket.write(responseString);
+          socket.end();
+        }
+      });
       break;
     default:
       console.log('Unknown request type:');

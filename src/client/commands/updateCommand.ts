@@ -1,5 +1,8 @@
 import { CommandModule } from "yargs";
 import chalk from "chalk";
+import {createCardFromArgs} from "../functions/createICard.js";
+import {UpdateRequest} from "../../requests/requests.js";
+import {sendRequest} from "../sendRequest.js";
 
 /**
  * Command module to update a card in the collection
@@ -77,5 +80,20 @@ export const updateCommand: CommandModule = {
     );
 
     // TODO: Update the card (server-side)
+    try {
+      const card = createCardFromArgs(argv);
+
+      const request: UpdateRequest = {
+        type: "update",
+        user: String(argv.user),
+        id: Number(argv.id),
+        card: card,
+      };
+
+      // Send the request to the server
+      sendRequest(request);
+    } catch (e) {
+      console.log(chalk.bold.red("Error creating the card:", e))
+    }
   },
 };

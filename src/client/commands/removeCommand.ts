@@ -1,5 +1,7 @@
 import { CommandModule } from "yargs";
 import chalk from "chalk";
+import {RemoveRequest} from "../../requests/requests.js";
+import {sendRequest} from "../sendRequest.js";
 
 /**
  * Command to remove a card from the collection
@@ -27,5 +29,13 @@ export const removeCommand: CommandModule = {
     );
 
     // TODO: Implement the remove card (server-side)
+    const request: RemoveRequest = {
+      type: "remove",
+      user: String(argv.user),
+      id: Number(argv.id),
+    };
+
+    // Send the request to the server
+    sendRequest(request);
   },
 };

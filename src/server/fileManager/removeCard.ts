@@ -3,15 +3,15 @@ import {ICard} from "../../types/ICard.js";
 import {CARDS_DIR} from "../consts.js";
 
 /**
- * Show one card in the collection for a user
+ * Remove a card from the collection for a user
  * @param user name of the user
  * @param cardId id of the card
  * @param callback
  */
-export const showCard = (
+export const removeCard = (
   user: string,
   cardId: number,
-  callback: (err: string | undefined, data: ICard | undefined) => void,
+  callback: (err: string | undefined, data: string | undefined) => void,
 ) => {
   const userDir = `${CARDS_DIR}/${user}`;
 
@@ -20,15 +20,14 @@ export const showCard = (
     if (err) {
       callback("Error on read dir. User does not exists", undefined);
     } else {
-      // Read the card file
-      fs.readFile(`${userDir}/${cardId}.json`, "utf-8", (err, data) => {
+      // Remove the card file
+      fs.unlink(`${userDir}/${cardId}.json`, (err) => {
         if (err) {
-          callback("Error on read file. Card does not exists", undefined);
+          callback("Error on remove file. Card does not exists", undefined);
         } else {
-          const card = JSON.parse(data);
-          callback(undefined, card);
+          callback(undefined, "Card removed successfully");
         }
       });
     }
   });
-}
+};

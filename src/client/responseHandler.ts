@@ -3,7 +3,7 @@
  * @description This file implements the response handler for the client.
  */
 import chalk from "chalk";
-import {GetResponse, ListResponse, ResponseTypes, SuccessResponse} from "../requests/responses.js";
+import {ErrorResponse, GetResponse, ListResponse, ResponseTypes, SuccessResponse} from "../requests/responses.js";
 import {ICard} from "../types/ICard.js";
 import {printCard} from "./functions/printCard.js";
 
@@ -22,7 +22,7 @@ export function handleResponse(response: ResponseTypes) {
       break;
     }
     case 'error': {
-      const errorResponse = response as SuccessResponse;
+      const errorResponse = response as ErrorResponse;
       console.log(chalk.bold.red(errorResponse.message));
       break;
     }
