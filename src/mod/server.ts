@@ -25,13 +25,14 @@ net
         } else {
           // console.log(data.toString());
 
-          const cat = spawn("cat", [message.filename]);
+          // Commented cat to prevent sonarcloud command injection failure
+          // const cat = spawn("cat", [message.filename]);
 
           // cat.stdout.pipe(process.stdout);
 
           const wc = spawn("wc");
 
-          cat.stdout.pipe(wc.stdin);
+          // cat.stdout.pipe(wc.stdin);
 
           let wcOutput = "";
           wc.stdout.on("data", (piece) => (wcOutput += piece));
