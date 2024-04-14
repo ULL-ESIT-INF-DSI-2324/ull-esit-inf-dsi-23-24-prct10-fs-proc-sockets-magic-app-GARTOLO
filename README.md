@@ -84,6 +84,9 @@ Por último, en cada archivo de `fileManager` se ha implementado una función qu
 
 Los archivos de pruebas se encuentran en la carpeta `tests`. Probamos todas las variantes de la función `createICard` y todas las funciones del `fileManager`.
 
+Nota: El Quality Gate de SonarCloud no ha pasado debido a nuevas líneas de código, pero podemos ver en el análisis que contamos con un 88% de cubrimiento al no tener en cuenta los manejadores.
+[Enlace](https://sonarcloud.io/component_measures?metric=coverage&view=list&id=ULL-ESIT-INF-DSI-2324_ull-esit-inf-dsi-23-24-prct10-fs-proc-sockets-magic-app-GARTOLO)
+
 ## Modificación
 
 La modificación de esta práctica se encuentra bajo el directorio `src/mod` con el código implementado en la sesión de prácticas.
