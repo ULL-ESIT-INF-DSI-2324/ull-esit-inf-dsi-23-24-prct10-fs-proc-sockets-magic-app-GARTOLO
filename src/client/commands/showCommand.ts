@@ -3,8 +3,8 @@ import chalk from "chalk";
 import { baseDir } from "../magic-app.js";
 import fs from "fs";
 import { printCard } from "../functions/printCard.js";
-import {ShowRequest} from "../../requests/requests.js";
-import {sendRequest} from "../sendRequest.js";
+import { ShowRequest } from "../../requests/requests.js";
+import { sendRequest } from "../sendRequest.js";
 
 /**
  * Command module to show a card in the collection

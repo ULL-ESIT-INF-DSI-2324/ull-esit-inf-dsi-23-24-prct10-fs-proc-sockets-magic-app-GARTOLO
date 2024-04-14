@@ -1,6 +1,6 @@
 import fs from "fs";
-import {ICard} from "../../types/ICard.js";
-import {CARDS_DIR} from "../consts.js";
+import { ICard } from "../../types/ICard.js";
+import { CARDS_DIR } from "../consts.js";
 
 /**
  * Remove a card from the collection for a user

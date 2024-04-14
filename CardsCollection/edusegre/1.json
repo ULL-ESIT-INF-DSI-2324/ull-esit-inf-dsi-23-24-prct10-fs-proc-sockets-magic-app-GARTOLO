@@ -1,1 +1,10 @@
-{"id":1,"name":"Test","manaCost":10000,"colour":"Blue","type":"Instant","rarity":"Rare","text":"Test","value":5}
+{
+  "id": 1,
+  "name": "Test",
+  "manaCost": 10000,
+  "colour": "Blue",
+  "type": "Instant",
+  "rarity": "Rare",
+  "text": "Test",
+  "value": 5
+}

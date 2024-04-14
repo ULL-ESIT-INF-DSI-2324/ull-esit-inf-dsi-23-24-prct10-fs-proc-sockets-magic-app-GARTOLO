@@ -1,9 +1,15 @@
-import { expect } from 'chai';
-import {createICard} from "../src/client/functions/createICard.js";
-import {CardColour, CardRarity, CardType, ICreatureCard, IPlaneswalkerCard} from "../src/types/ICard.js";
+import { expect } from "chai";
+import { createICard } from "../src/client/functions/createICard.js";
+import {
+  CardColour,
+  CardRarity,
+  CardType,
+  ICreatureCard,
+  IPlaneswalkerCard,
+} from "../src/types/ICard.js";
 
-describe('Test createICard', () => {
-  it('Create a card with invalid colour', () => {
+describe("Test createICard", () => {
+  it("Create a card with invalid colour", () => {
     expect(() => {
       createICard({
         id: 2,
@@ -18,7 +24,7 @@ describe('Test createICard', () => {
     }).to.throw("Invalid card colour");
   });
 
-  it('Create a card with invalid type', () => {
+  it("Create a card with invalid type", () => {
     expect(() => {
       createICard({
         id: 2,
@@ -33,7 +39,7 @@ describe('Test createICard', () => {
     }).to.throw("Invalid card type");
   });
 
-  it('Create a card with invalid rarity', () => {
+  it("Create a card with invalid rarity", () => {
     expect(() => {
       createICard({
         id: 2,
@@ -48,7 +54,7 @@ describe('Test createICard', () => {
     }).to.throw("Invalid card rarity");
   });
 
-  it('Create a creature card without strength and resistance', () => {
+  it("Create a creature card without strength and resistance", () => {
     expect(() => {
       createICard({
         id: 2,
@@ -63,7 +69,7 @@ describe('Test createICard', () => {
     }).to.throw("Creature cards require strength and resistance");
   });
 
-  it('Create a Planeswalker card without loyalty', () => {
+  it("Create a Planeswalker card without loyalty", () => {
     expect(() => {
       createICard({
         id: 2,
@@ -78,7 +84,7 @@ describe('Test createICard', () => {
     }).to.throw("Planeswalker cards require loyalty");
   });
 
-  it('Create a card without id', () => {
+  it("Create a card without id", () => {
     expect(() => {
       createICard({
         name: "Test Card",
@@ -92,8 +98,7 @@ describe('Test createICard', () => {
     }).to.throw("Card ID is required");
   });
 
-
-  it('Create a card without name', () => {
+  it("Create a card without name", () => {
     expect(() => {
       createICard({
         id: 2,
@@ -107,7 +112,7 @@ describe('Test createICard', () => {
     }).to.throw("Card name is required");
   });
 
-  it('Create a card without mana cost', () => {
+  it("Create a card without mana cost", () => {
     expect(() => {
       createICard({
         id: 2,
@@ -121,7 +126,7 @@ describe('Test createICard', () => {
     }).to.throw("Mana cost is required");
   });
 
-  it('Create a card without colour', () => {
+  it("Create a card without colour", () => {
     expect(() => {
       createICard({
         id: 2,
@@ -135,7 +140,7 @@ describe('Test createICard', () => {
     }).to.throw("Card colour is required");
   });
 
-  it('Create a card without type', () => {
+  it("Create a card without type", () => {
     expect(() => {
       createICard({
         id: 2,
@@ -149,7 +154,7 @@ describe('Test createICard', () => {
     }).to.throw("Card type is required");
   });
 
-  it('Create a card without rarity', () => {
+  it("Create a card without rarity", () => {
     expect(() => {
       createICard({
         id: 2,
@@ -163,7 +168,7 @@ describe('Test createICard', () => {
     }).to.throw("Card rarity is required");
   });
 
-  it('Create a card without text', () => {
+  it("Create a card without text", () => {
     expect(() => {
       createICard({
         id: 2,
@@ -177,7 +182,7 @@ describe('Test createICard', () => {
     }).to.throw("Card text is required");
   });
 
-  it('Create a card without value', () => {
+  it("Create a card without value", () => {
     expect(() => {
       createICard({
         id: 2,

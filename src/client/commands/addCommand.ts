@@ -1,9 +1,9 @@
-import {CommandModule} from "yargs";
+import { CommandModule } from "yargs";
 import chalk from "chalk";
-import {sendRequest} from "../sendRequest.js";
-import {AddRequest} from "../../requests/requests.js";
+import { sendRequest } from "../sendRequest.js";
+import { AddRequest } from "../../requests/requests.js";
 
-import { createCardFromArgs } from "../functions/createICard.js"
+import { createCardFromArgs } from "../functions/createICard.js";
 
 /**
  * Command to add a new card to the collection
@@ -81,16 +81,16 @@ export const addCommand: CommandModule = {
     // TODO: Add the card (server)
     try {
       const card = createCardFromArgs(argv);
-      
+
       const request: AddRequest = {
         type: "add",
         user: String(argv.user),
         card: card,
-      }
-  
+      };
+
       sendRequest(request);
     } catch (e) {
-      console.log(chalk.bold.red("Error creating the card:", e))
+      console.log(chalk.bold.red("Error creating the card:", e));
     }
   },
 };

@@ -1,6 +1,6 @@
 import fs from "fs";
-import {ICard} from "../../types/ICard.js";
-import {CARDS_DIR} from "../consts.js";
+import { ICard } from "../../types/ICard.js";
+import { CARDS_DIR } from "../consts.js";
 
 /**
  * Update a card in the collection for a user
@@ -32,16 +32,20 @@ export const updateCard = (
             ...card,
           };
           // Write the card file
-          fs.writeFile(`${userDir}/${card.id}.json`, JSON.stringify(updatedCard), (err) => {
-            /* c8 ignore next 2 */
-            if (err) {
-              callback("Error on write file");
-            } else {
-              callback(undefined);
-            }
-          });
+          fs.writeFile(
+            `${userDir}/${card.id}.json`,
+            JSON.stringify(updatedCard),
+            (err) => {
+              /* c8 ignore next 2 */
+              if (err) {
+                callback("Error on write file");
+              } else {
+                callback(undefined);
+              }
+            },
+          );
         }
       });
     }
   });
-}
+};

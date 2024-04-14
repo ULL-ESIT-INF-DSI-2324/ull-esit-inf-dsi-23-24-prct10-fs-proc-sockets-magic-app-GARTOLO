@@ -1,7 +1,7 @@
 import { CommandModule } from "yargs";
 import chalk from "chalk";
-import {RemoveRequest} from "../../requests/requests.js";
-import {sendRequest} from "../sendRequest.js";
+import { RemoveRequest } from "../../requests/requests.js";
+import { sendRequest } from "../sendRequest.js";
 
 /**
  * Command to remove a card from the collection

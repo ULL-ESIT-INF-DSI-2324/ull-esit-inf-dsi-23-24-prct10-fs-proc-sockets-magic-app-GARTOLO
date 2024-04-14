@@ -1,9 +1,9 @@
 /**
  * File with types for responses from the server
  */
-import {ICard} from "../types/ICard.js";
+import { ICard } from "../types/ICard.js";
 
-type ResponseStatus = 'success' | 'error';
+type ResponseStatus = "success" | "error";
 
 /**
  * Base response type
@@ -26,9 +26,9 @@ export interface SuccessResponse extends BaseResponse {
  */
 export function createSuccessResponse(message: string): SuccessResponse {
   return {
-    status: 'success',
-    type: 'success',
-    message
+    status: "success",
+    type: "success",
+    message,
   };
 }
 
@@ -45,9 +45,9 @@ export interface ErrorResponse extends BaseResponse {
  */
 export function createErrorResponse(message: string): ErrorResponse {
   return {
-    status: 'error',
-    type: 'error',
-    message
+    status: "error",
+    type: "error",
+    message,
   };
 }
 
@@ -64,9 +64,9 @@ export interface ListResponse extends BaseResponse {
  */
 export function createListResponse(cards: ICard[]): ListResponse {
   return {
-    status: 'success',
-    type: 'list',
-    cards
+    status: "success",
+    type: "list",
+    cards,
   };
 }
 
@@ -83,10 +83,14 @@ export interface GetResponse extends BaseResponse {
  */
 export function createGetResponse(card: ICard): GetResponse {
   return {
-    status: 'success',
-    type: 'get',
-    card
+    status: "success",
+    type: "get",
+    card,
   };
 }
 
-export type ResponseTypes = SuccessResponse | ErrorResponse | ListResponse | GetResponse;
+export type ResponseTypes =
+  | SuccessResponse
+  | ErrorResponse
+  | ListResponse
+  | GetResponse;

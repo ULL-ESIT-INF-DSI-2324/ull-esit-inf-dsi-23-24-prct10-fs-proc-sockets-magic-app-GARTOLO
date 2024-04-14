@@ -2,7 +2,7 @@
  * File that contains all the types for requests to the server
  */
 
-import {ICard} from "../types/ICard.js";
+import { ICard } from "../types/ICard.js";
 
 /**
  * Base request type
@@ -15,7 +15,7 @@ export interface BaseRequest {
  * Add request type
  */
 export interface AddRequest extends BaseRequest {
-  type: 'add';
+  type: "add";
   user: string;
   card: ICard;
 }
@@ -24,7 +24,7 @@ export interface AddRequest extends BaseRequest {
  * List request type
  */
 export interface ListRequest extends BaseRequest {
-  type: 'list';
+  type: "list";
   user: string;
 }
 
@@ -32,7 +32,7 @@ export interface ListRequest extends BaseRequest {
  * Show request type
  */
 export interface ShowRequest extends BaseRequest {
-  type: 'show';
+  type: "show";
   user: string;
   id: number;
 }
@@ -41,7 +41,7 @@ export interface ShowRequest extends BaseRequest {
  * Update request type
  */
 export interface UpdateRequest extends BaseRequest {
-  type: 'update';
+  type: "update";
   user: string;
   id: number;
   card: ICard;
@@ -51,9 +51,14 @@ export interface UpdateRequest extends BaseRequest {
  * Remove request type
  */
 export interface RemoveRequest extends BaseRequest {
-  type: 'remove';
+  type: "remove";
   user: string;
   id: number;
 }
 
-export type RequestTypes = AddRequest | ListRequest | ShowRequest | UpdateRequest | RemoveRequest;
+export type RequestTypes =
+  | AddRequest
+  | ListRequest
+  | ShowRequest
+  | UpdateRequest
+  | RemoveRequest;

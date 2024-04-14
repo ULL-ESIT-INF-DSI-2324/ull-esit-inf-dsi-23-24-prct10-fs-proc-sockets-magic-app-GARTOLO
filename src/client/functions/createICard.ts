@@ -1,6 +1,15 @@
-import {CardColour, CardRarity, CardType, ICard, ICreatureCard, IPlaneswalkerCard} from "../../types/ICard.js";
+import {
+  CardColour,
+  CardRarity,
+  CardType,
+  ICard,
+  ICreatureCard,
+  IPlaneswalkerCard,
+} from "../../types/ICard.js";
 
-export function createICard(cardData: Partial<ICard> | Partial<ICreatureCard>): ICard {
+export function createICard(
+  cardData: Partial<ICard> | Partial<ICreatureCard>,
+): ICard {
   if (!cardData.id) {
     throw new Error("Card ID is required");
   }
@@ -80,20 +89,18 @@ export function createICard(cardData: Partial<ICard> | Partial<ICreatureCard>): 
  * @param argv
  */
 export function createCardFromArgs(argv: any): ICard {
-  return createICard(
-    {
-      id: Number(argv.id),
-      name: String(argv.name),
-      manaCost: Number(argv.mana_cost),
-      colour: argv.colour,
-      type: argv.type,
-      rarity: argv.rarity,
-      text: argv.text,
-      value: Number(argv.value),
-      resistance: argv.resistance ? Number(argv.resistance) : undefined,
-      strength: argv.strength ? Number(argv.strength) : undefined,
-      loyalty: argv.loyalty ? Number(argv.loyalty) : undefined,
-    }
-  );
+  return createICard({
+    id: Number(argv.id),
+    name: String(argv.name),
+    manaCost: Number(argv.mana_cost),
+    colour: argv.colour,
+    type: argv.type,
+    rarity: argv.rarity,
+    text: argv.text,
+    value: Number(argv.value),
+    resistance: argv.resistance ? Number(argv.resistance) : undefined,
+    strength: argv.strength ? Number(argv.strength) : undefined,
+    loyalty: argv.loyalty ? Number(argv.loyalty) : undefined,
+  });
 }
 /* c8 ignore stop */

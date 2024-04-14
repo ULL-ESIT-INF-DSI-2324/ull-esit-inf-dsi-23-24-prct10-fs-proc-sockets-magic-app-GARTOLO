@@ -1,7 +1,7 @@
 import { CommandModule } from "yargs";
 import chalk from "chalk";
-import {ListRequest} from "../../requests/requests.js";
-import {sendRequest} from "../sendRequest.js";
+import { ListRequest } from "../../requests/requests.js";
+import { sendRequest } from "../sendRequest.js";
 
 /**
  * Command to list all cards in the collection
@@ -20,7 +20,7 @@ export const listCommand: CommandModule = {
     console.log(chalk.blue("Listing all cards for user: " + argv.user));
 
     const request: ListRequest = {
-      type: 'list',
+      type: "list",
       user: String(argv.user),
     };
 
